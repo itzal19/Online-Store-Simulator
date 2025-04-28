@@ -1,7 +1,7 @@
-from typing import List, Dict
 from utils import search_product, print_shopping_cart_table, add_order_to_file
+from typing import List, Dict
 
-SHOPPING_CART = [
+SHOPING_CART = [
 
 ]
 
@@ -52,12 +52,37 @@ def remove_product_from_shopping_cart() -> None:
         else:
             print("\n❌ Error: El producto no se encuentra en el carrito de compras.\n")
 
-def clear_shopping_cart():
-    pass
+def clear_shopping_cart() -> None:
+    if SHOPING_CART:
+        print(
+        """¿Estás seguro de que deseas vaciar el carrito de compras?\n
+        1. Sí, vaciar carrito ⚠️
+        2. No, cancelar ❌
+        """)
+        choice = input("> ")
+        if choice == "1":
+            SHOPING_CART.clear()
+            print("\n✅ Carrito vaciado correctamente.\n")
+        elif choice == "2":
+            print("\n⚠️  Operación cancelada. El carrito no fue modificado.\n")
+        else:
+            print("\n⚠️  Opción no válida. El carrito no fue modificado.\n")
+    else:
+        print("\n⚠️  Aún no has agregado productos al carrito.\n")
 
-def show_shopping_cart():
-    pass
+def show_shopping_cart() -> None:
+    if SHOPING_CART:
+        total = print_shopping_cart_table(SHOPING_CART)
+        print(f"Total: {total}\n")
+    else:
+        print("\n⚠️  Aún no has agregado productos al carrito.\n")
 
-def checkout_shopping_cart():
-    pass
-
+def checkout_shopping_cart() -> None:
+    if SHOPING_CART:
+        total = print_shopping_cart_table(SHOPING_CART)
+        print(f"Total: {total}")
+        print("\nGracias por tu compra 😊\n")
+        add_order_to_file(SHOPING_CART)
+        SHOPING_CART.clear()
+    else:
+        print("\n⚠️  Aún no has agregado productos al carrito.\n")
