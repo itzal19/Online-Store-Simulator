@@ -1,6 +1,6 @@
-from cart import show_shopping_cart, add_product_to_shopping_cart, remove_product_from_shopping_cart, clear_shopping_cart, checkout_shopping_cart
 from catalog import show_catalog
 from menu import show_menu
+from cart import show_shopping_cart,add_product_to_shopping_cart, remove_product_from_shopping_cart, clear_shopping_cart, checkout_shopping_cart
 
 WAREHOUSE = [
     {"code": "E001", "name": "Licuadora", "price": 340},
@@ -15,6 +15,8 @@ WAREHOUSE = [
     {"code": "E010", "name": "Televisor", "price": 780}
 ]
 
+#SHOPING_CART = []
+
 print("\nBienvenido a la tienda virtual 🛍️\n")
 while True:
     show_menu()
@@ -24,9 +26,9 @@ while True:
             raise ValueError("Se debe ingresar un número del 1 al 7.")
         match opcion:
             case "1":
-                show_catalog()
+                show_catalog(WAREHOUSE)
             case "2":
-                add_product_to_shopping_cart()
+                add_product_to_shopping_cart(WAREHOUSE)
             case "3":
                 remove_product_from_shopping_cart()
             case "4":
