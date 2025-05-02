@@ -8,7 +8,7 @@ def print_shopping_cart_table(cart: List[Dict[str,str|int]]) -> int:
     data = []
     for product in cart:
         subtotal = product["quantity"] * product["price"]
-        product_in_cart = [product["code"], product["name"], product["quantity"], product["price"], subtotal]
+        product_in_cart = [product["code"], product["name"], product["quantity"], f"S/ {product["price"]:.2f}", f"S/ {subtotal:.2f}"]
         data.append(product_in_cart)
         total += subtotal    
     print("\n")
@@ -29,7 +29,7 @@ def add_order_to_file(cart: List[Dict[str,str|int]]) -> None:
     data = []
     for product in cart:
         subtotal = product["quantity"] * product["price"]
-        product_in_cart = [product["code"], product["name"], product["quantity"], product["price"], subtotal]
+        product_in_cart = [product["code"], product["name"], product["quantity"], f"S/ {product["price"]:.2f}", f"S/ {subtotal:.2f}"]
         data.append(product_in_cart)
         total += subtotal  
     tabla = tabulate(data, headers=headers, tablefmt="github")
@@ -38,3 +38,5 @@ def add_order_to_file(cart: List[Dict[str,str|int]]) -> None:
         file.write(f"Resumen de compra\nFecha y Hora: {date_time}\n\n")
         file.write(tabla)
         file.write(f"\n\nTotal a pagar: S/ {total:.2f}\n")
+
+        

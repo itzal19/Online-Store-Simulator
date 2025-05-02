@@ -10,6 +10,7 @@ Online Store Simulator/
     checkout.py         # Module for the checkout cart
     menu.py             # Module for showing user menu
     utils.py            # Utility functions
+    config.py           # Constant
     requeriments.txt    
     README.md
     .gitignore
